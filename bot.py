@@ -532,7 +532,7 @@ def main() -> None:
 
     sesion = crear_sesion_retry()
     vt_client = VTClient(api_key, sesion)
-    report_gen = ReportGenerator(args.output, args.formato)
+    report_gen = ReportGenerator(args.output, args.format)
 
     logger.info("")
     logger.info("=" * 60)

@@ -1,0 +1,583 @@
+/* ==========================================================================
+   DiamondEye Threat Intelligence Dashboard - Dark Mode / Neon Theme
+   ==========================================================================
+   Paleta:
+     Fondo:        #0a0e17
+     Superficie:   #121926 / #1a2332
+     Texto:        #c8d6e5
+     Verde neon:   #00ffcc
+     Rojo alerta:  #ff3355
+     Ambar:        #ffaa00
+     Naranja:      #ff6633
+   ========================================================================== */
+
+/* ─── Reset & Base ────────────────────────────────────────────────────────── */
+
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 16px;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', sans-serif;
+    background-color: #0a0e17;
+    color: #c8d6e5;
+    line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ─── Scrollbar personalizada ─────────────────────────────────────────────── */
+
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #0a0e17;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #1a3a4a;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #00ffcc44;
+}
+
+/* ─── Header ──────────────────────────────────────────────────────────────── */
+
+.header {
+    background: linear-gradient(135deg, #0d1520 0%, #121926 100%);
+    border-bottom: 1px solid rgba(0, 255, 204, 0.15);
+    padding: 1.2rem 2rem;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
+}
+
+.header-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.header-icon {
+    color: #00ffcc;
+    display: flex;
+    align-items: center;
+    filter: drop-shadow(0 0 8px rgba(0, 255, 204, 0.4));
+}
+
+.header-title {
+    font-size: 1.8rem;
+    font-weight: 800;
+    background: linear-gradient(90deg, #00ffcc, #00ccff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    letter-spacing: 1px;
+}
+
+.header-subtitle {
+    font-size: 0.85rem;
+    color: #6c8aa0;
+    letter-spacing: 0.5px;
+    margin-top: -2px;
+}
+
+/* ─── Layout Container ────────────────────────────────────────────────────── */
+
+.container {
+    flex: 1;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem;
+    width: 100%;
+}
+
+/* ─── Cards ───────────────────────────────────────────────────────────────── */
+
+.card {
+    background: rgba(18, 25, 38, 0.9);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(0, 255, 204, 0.12);
+    border-radius: 16px;
+    padding: 1.8rem;
+    margin-bottom: 1.5rem;
+    box-shadow:
+        0 8px 32px rgba(0, 0, 0, 0.3),
+        inset 0 1px 0 rgba(0, 255, 204, 0.05);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    border-color: rgba(0, 255, 204, 0.25);
+}
+
+.card-title {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: #e0eaf0;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin-bottom: 0.75rem;
+}
+
+.card-title svg {
+    color: #00ffcc;
+    flex-shrink: 0;
+}
+
+.card-description {
+    color: #7a8fa5;
+    font-size: 0.9rem;
+    margin-bottom: 1.2rem;
+}
+
+.card-description code {
+    background: rgba(0, 255, 204, 0.1);
+    color: #00ffcc;
+    padding: 0.1rem 0.4rem;
+    border-radius: 4px;
+    font-size: 0.85rem;
+}
+
+/* ─── Upload Form ─────────────────────────────────────────────────────────── */
+
+.upload-form {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1rem;
+}
+
+.file-input-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    flex: 1;
+    min-width: 250px;
+}
+
+.file-input-wrapper input[type="file"] {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+}
+
+.file-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.65rem 1.2rem;
+    background: rgba(0, 255, 204, 0.08);
+    border: 1px dashed rgba(0, 255, 204, 0.35);
+    border-radius: 10px;
+    color: #00ffcc;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    white-space: nowrap;
+}
+
+.file-label:hover {
+    background: rgba(0, 255, 204, 0.15);
+    border-color: #00ffcc;
+    box-shadow: 0 0 20px rgba(0, 255, 204, 0.15);
+}
+
+.file-label svg {
+    flex-shrink: 0;
+}
+
+.file-name {
+    color: #6c8aa0;
+    font-size: 0.88rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 200px;
+}
+
+/* ─── Buttons ─────────────────────────────────────────────────────────────── */
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.7rem 1.6rem;
+    border: none;
+    border-radius: 10px;
+    font-size: 0.95rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    white-space: nowrap;
+    letter-spacing: 0.3px;
+}
+
+.btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none !important;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #00cc99, #00ffcc);
+    color: #0a0e17;
+    box-shadow: 0 4px 20px rgba(0, 255, 204, 0.25);
+}
+
+.btn-primary:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 30px rgba(0, 255, 204, 0.4);
+}
+
+.btn-primary:active:not(:disabled) {
+    transform: translateY(0);
+}
+
+.btn-icon {
+    display: flex;
+    align-items: center;
+}
+
+/* ─── Messages ────────────────────────────────────────────────────────────── */
+
+.message {
+    padding: 0.8rem 1.2rem;
+    border-radius: 10px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    margin-top: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+}
+
+.message-error {
+    background: rgba(255, 51, 85, 0.12);
+    border: 1px solid rgba(255, 51, 85, 0.3);
+    color: #ff5577;
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* ─── Progress Bar ────────────────────────────────────────────────────────── */
+
+.progress-card .card-title svg {
+    animation: spin 1.5s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+.progress-info {
+    margin-bottom: 0.75rem;
+}
+
+#progress-text {
+    font-size: 0.95rem;
+    color: #a0b8cc;
+    font-weight: 500;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 22px;
+    background: rgba(255, 255, 255, 0.06);
+    border-radius: 11px;
+    overflow: hidden;
+    border: 1px solid rgba(0, 255, 204, 0.15);
+    position: relative;
+}
+
+.progress-fill {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, #00cc99, #00ffcc);
+    border-radius: 11px;
+    transition: width 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+    box-shadow:
+        0 0 15px rgba(0, 255, 204, 0.4),
+        inset 0 1px 0 rgba(255, 255, 255, 0.15);
+    position: relative;
+}
+
+.progress-fill::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.15),
+        transparent
+    );
+    animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+}
+
+.progress-percent {
+    text-align: right;
+    font-size: 0.85rem;
+    color: #6c8aa0;
+    margin-top: 0.4rem;
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+}
+
+/* ─── Summary Grid ────────────────────────────────────────────────────────── */
+
+.summary-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+}
+
+.summary-card {
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 12px;
+    padding: 1rem 0.8rem;
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.summary-card:hover {
+    transform: translateY(-2px);
+}
+
+.summary-label {
+    display: block;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    color: #6c8aa0;
+    margin-bottom: 0.3rem;
+}
+
+.summary-value {
+    display: block;
+    font-size: 1.8rem;
+    font-weight: 800;
+    line-height: 1.2;
+    font-variant-numeric: tabular-nums;
+}
+
+/* Colores por tipo */
+.summary-total  { border-color: rgba(100, 180, 255, 0.2); }
+.summary-total  .summary-value { color: #64b4ff; }
+
+.summary-clean    { border-color: rgba(0, 255, 204, 0.2); }
+.summary-clean    .summary-value { color: #00ffcc; }
+
+.summary-malicious { border-color: rgba(255, 51, 85, 0.2); }
+.summary-malicious .summary-value { color: #ff3355; }
+
+.summary-bogon  { border-color: rgba(255, 170, 0, 0.2); }
+.summary-bogon  .summary-value { color: #ffaa00; }
+
+.summary-error  { border-color: rgba(255, 102, 51, 0.2); }
+.summary-error  .summary-value { color: #ff6633; }
+
+/* ─── Chart ───────────────────────────────────────────────────────────────── */
+
+.chart-wrapper {
+    max-width: 340px;
+    margin: 0 auto 1.5rem auto;
+    padding: 0.5rem;
+}
+
+/* ─── Table ───────────────────────────────────────────────────────────────── */
+
+.table-wrapper {
+    overflow-x: auto;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.results-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+}
+
+.results-table thead {
+    background: rgba(0, 255, 204, 0.06);
+}
+
+.results-table th {
+    text-align: left;
+    padding: 0.85rem 1rem;
+    font-size: 0.78rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    color: #6c8aa0;
+    border-bottom: 1px solid rgba(0, 255, 204, 0.1);
+}
+
+.results-table td {
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+}
+
+.results-table tbody tr {
+    transition: background 0.15s ease;
+}
+
+.results-table tbody tr:hover {
+    background: rgba(0, 255, 204, 0.04);
+}
+
+/* Estados condicionales en la tabla */
+.status-clean {
+    color: #00ffcc;
+    font-weight: 600;
+}
+
+.status-malicious {
+    color: #ff3355;
+    font-weight: 700;
+}
+
+.status-bogon {
+    color: #6c8aa0;
+    font-style: italic;
+}
+
+.status-error {
+    color: #ff6633;
+    font-weight: 600;
+}
+
+/* ─── Footer ──────────────────────────────────────────────────────────────── */
+
+.footer {
+    text-align: center;
+    padding: 1.5rem 2rem;
+    color: #3d5668;
+    font-size: 0.8rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.04);
+    margin-top: auto;
+}
+
+/* ─── Responsive ──────────────────────────────────────────────────────────── */
+
+@media (max-width: 768px) {
+    .header {
+        padding: 0.9rem 1rem;
+    }
+
+    .header-title {
+        font-size: 1.35rem;
+    }
+
+    .container {
+        padding: 1rem 0.75rem;
+    }
+
+    .card {
+        padding: 1.2rem;
+    }
+
+    .upload-form {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .file-input-wrapper {
+        flex-direction: column;
+        align-items: stretch;
+        min-width: unset;
+    }
+
+    .file-name {
+        max-width: 100%;
+        text-align: center;
+    }
+
+    .file-label {
+        justify-content: center;
+    }
+
+    .btn {
+        justify-content: center;
+    }
+
+    .summary-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 0.5rem;
+    }
+
+    .summary-card {
+        padding: 0.7rem 0.5rem;
+    }
+
+    .summary-value {
+        font-size: 1.4rem;
+    }
+
+    .chart-wrapper {
+        max-width: 260px;
+    }
+
+    .results-table {
+        font-size: 0.8rem;
+    }
+
+    .results-table th,
+    .results-table td {
+        padding: 0.55rem 0.6rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .summary-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .header-title {
+        font-size: 1.1rem;
+    }
+
+    .header-subtitle {
+        font-size: 0.75rem;
+    }
+}
